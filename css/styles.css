@@ -1,0 +1,40 @@
+/* Arquivo de Estilos Principal
+  Projeto: Guia Profissional de Desenvolvimento Web
+*/
+
+/* Variáveis Globais */
+:root {
+  /* Paleta de Cores */
+  --cor-primaria: #2563EB;
+  --cor-secundaria: #10B981;
+  --cor-texto: #111827;
+  --cor-fundo-claro: #F3F4F6;
+  --cor-bordas: #E5E7EB;
+
+  /* Cores para o Tema Escuro (serão usadas depois) */
+  --cor-fundo-escuro: #111827;
+  --cor-texto-escuro: #F3F4F6;
+
+  /* Tipografia */
+  --fonte-titulos: 'Poppins', sans-serif;
+  --fonte-texto: 'Inter', sans-serif;
+}
+
+/* Reset Básico e Estilos Globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo-claro);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulos);
+  color: var(--cor-primaria);
+}
