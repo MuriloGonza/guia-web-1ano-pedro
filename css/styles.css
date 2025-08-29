@@ -1,8 +1,6 @@
-/* Arquivo de Estilos Principal
-  Projeto: Guia Profissional de Desenvolvimento Web
-*/
+/* === FONTES E ESTILOS GLOBAIS === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@600;700&display=swap');
 
-/* Variáveis Globais */
 :root {
   /* Paleta de Cores */
   --cor-primaria: #2563EB;
@@ -10,31 +8,520 @@
   --cor-texto: #111827;
   --cor-fundo-claro: #F3F4F6;
   --cor-bordas: #E5E7EB;
-
-  /* Cores para o Tema Escuro (serão usadas depois) */
-  --cor-fundo-escuro: #111827;
-  --cor-texto-escuro: #F3F4F6;
+  --cor-branco: #FFFFFF;
 
   /* Tipografia */
   --fonte-titulos: 'Poppins', sans-serif;
   --fonte-texto: 'Inter', sans-serif;
+
+  /* Espaçamento */
+  --header-height: 70px;
 }
 
-/* Reset Básico e Estilos Globais */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--fonte-texto);
   color: var(--cor-texto);
   background-color: var(--cor-fundo-claro);
-  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* === HEADER === */
+.site-header {
+  background-color: var(--cor-branco);
+  border-bottom: 1px solid var(--cor-bordas);
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-text {
   font-family: var(--fonte-titulos);
+  font-weight: 700;
+  font-size: 1.25rem;
   color: var(--cor-primaria);
+  text-decoration: none;
+}
+
+/* Esconde o menu principal no mobile */
+.main-nav .menu {
+  display: none;
+}
+
+/* Estilo do botão hambúrguer */
+.menu-hamburguer {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+}
+
+.menu-hamburguer span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--cor-texto);
+}
+
+/* === MAIN CONTENT === */
+main {
+  padding-top: var(--header-height);
+}
+
+/* Seção Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+  background-color: var(--cor-branco);
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--cor-texto);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-cta {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: var(--fonte-titulos);
+  transition: background-color 0.3s ease;
+}
+
+.btn-cta:hover {
+  background-color: #1D4ED8;
+}
+
+/* Seção de Definições */
+.definitions-section {
+  padding: 4rem 0;
+}
+
+.definitions-section h2 {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 3rem;
+  color: var(--cor-texto);
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.card {
+  background-color: var(--cor-branco);
+  border: 1px solid var(--cor-bordas);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.card p {
+  margin-bottom: 1rem;
+}
+
+.code-block {
+  background-color: #1E293B;
+  color: var(--cor-branco);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+}
+
+/* === FOOTER === */
+.site-footer {
+  background-color: var(--cor-texto);
+  color: var(--cor-fundo-claro);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.site-footer .container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer-links h4 {
+  font-family: var(--fonte-titulos);
+  margin-bottom: 1rem;
+  color: var(--cor-branco);
+}
+
+.footer-links ul {
+  list-style-type: none;
+}
+
+.footer-links ul li a {
+  color: var(--cor-bordas);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  display: inline-block;
+}
+
+.footer-links ul li a:hover {
+  color: var(--cor-secundaria);
+}
+
+.footer-credits p {
+  font-size: 0.9rem;
+  color: var(--cor-bordas);
+}
+
+/* === MEDIA QUERIES - A partir de 768px (tablets e desktops) === */
+@media (min-width: 768px) {
+  /* Header */
+  .menu-hamburguer {
+    display: none;
+  }
+
+  .main-nav .menu {
+    display: flex;
+    list-style-type: none;
+    gap: 1.5rem;
+  }
+
+  .main-nav .menu a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: 600;
+    position: relative;
+    padding: 0.5rem 0;
+  }
+  
+  .main-nav .menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-primaria);
+    transition: width 0.3s ease;
+  }
+
+  .main-nav .menu a:hover::after {
+    width: 100%;
+  }
+
+  /* Cards */
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Footer */
+  .site-footer .container {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* === ESTILOS DO MENU MOBILE ATIVO === */
+.main-nav .menu.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--header-height);
+    right: 0;
+    background-color: var(--cor-branco);
+    width: 80%;
+    max-width: 300px;
+    height: calc(100vh - var(--header-height));
+    padding: 2rem;
+    box-shadow: -5px 0px 15px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s ease-in-out;
+}
+
+.main-nav .menu.active li {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.main-nav .menu.active a {
+    color: var(--cor-texto);
+    font-size: 1.2rem;
+}
+
+/* Animação para o menu surgir */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* =================================== */
+/* === PÁGINA TECNOLOGIAS === */
+/* =================================== */
+
+/* Classe de acessibilidade para esconder visualmente */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.page-intro {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.filtering-tools {
+  background-color: var(--cor-branco);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--cor-bordas);
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  background-color: var(--cor-fundo-claro);
+  border: 1px solid var(--cor-bordas);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-family: var(--fonte-texto);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  background-color: var(--cor-bordas);
+}
+
+.filter-btn.active {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  border-color: var(--cor-primaria);
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#search-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--cor-bordas);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.tech-card {
+  background-color: var(--cor-branco);
+  border: 1px solid var(--cor-bordas);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tech-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.tech-card h3 {
+  margin-bottom: 0;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  color: var(--cor-branco);
+  text-transform: capitalize;
+}
+
+.badge[data-level="básico"] { background-color: #3B82F6; } /* Azul */
+.badge[data-level="intermediario"] { background-color: var(--cor-secundaria); } /* Verde */
+.badge[data-level="avançado"] { background-color: #EF4444; } /* Vermelho */
+
+.details-btn {
+  background-color: transparent;
+  border: 1px solid var(--cor-primaria);
+  color: var(--cor-primaria);
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+}
+
+.details-btn:hover {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+}
+
+.no-results-message {
+    text-align: center;
+    padding: 2rem;
+    font-weight: 600;
+}
+
+
+/* === ESTILOS DO MODAL === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 24, 39, 0.7); /* Cor --cor-texto com transparência */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: var(--cor-branco);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-content h2 {
+  margin-bottom: 1.5rem;
+}
+
+.pros-cons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.pros-cons ul {
+    list-style-position: inside;
+}
+
+.modal-content a {
+    color: var(--cor-primaria);
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 1.5rem;
+}
+
+/* === MEDIA QUERIES para PÁGINA TECNOLOGIAS === */
+@media (min-width: 768px) {
+  .filtering-tools {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .search-container {
+      max-width: 300px;
+  }
+
+  .tech-grid {
+    /* Mínimo de 250px por card, máximo de 1fr (ocupa o espaço disponível) */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .pros-cons {
+    grid-template-columns: 1fr 1fr;
+  }
 }

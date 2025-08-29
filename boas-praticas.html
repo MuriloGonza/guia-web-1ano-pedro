@@ -19,7 +19,106 @@
     </header>
 
     <main>
-        <h1>Boas Práticas de Desenvolvimento</h1>
+        <div class="container">
+            <section class="page-intro">
+                <h1>Boas Práticas de Desenvolvimento</h1>
+                <p>Conceitos e práticas essenciais para escrever código limpo, eficiente e profissional.</p>
+            </section>
+
+            <section class="progress-section">
+                <h2>Meu Progresso de Estudo</h2>
+                <div class="progress-bar-container">
+                    <label for="learning-progress">Progresso: <span id="progress-text">0%</span></label>
+                    <progress id="learning-progress" max="100" value="0"></progress>
+                </div>
+            </section>
+
+            <section class="accordion">
+                
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        <input type="checkbox" id="check-semantica" class="progress-checkbox" data-item="semantica">
+                        <label for="check-semantica" class="sr-only">Marcar Semântica e Acessibilidade como concluído</label>
+                        <button class="accordion-btn" aria-expanded="false" aria-controls="content-semantica">
+                            Semântica & Acessibilidade
+                            <span class="accordion-icon">+</span>
+                        </button>
+                    </div>
+                    <div id="content-semantica" class="accordion-content" hidden>
+                        <ul>
+                            <li>Use tags HTML semânticas (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`) para dar significado à estrutura do seu site.</li>
+                            <li>Sempre forneça texto alternativo descritivo para imagens (`<img alt="...">`) para usuários de leitores de tela.</li>
+                            <li>Associe `labels` a campos de formulário (`<label for="id">`) para melhorar a usabilidade e acessibilidade.</li>
+                            <li>Garanta um bom contraste de cores entre texto e fundo (mínimo de 4.5:1 para texto normal).</li>
+                        </ul>
+                        <div class="code-block">
+                            <pre><code>&lt;nav aria-label="Navegação principal"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                        <input type="checkbox" id="check-responsividade" class="progress-checkbox" data-item="responsividade">
+                        <label for="check-responsividade" class="sr-only">Marcar Responsividade como concluído</label>
+                        <button class="accordion-btn" aria-expanded="false" aria-controls="content-responsividade">
+                            Responsividade (Mobile-First)
+                            <span class="accordion-icon">+</span>
+                        </button>
+                    </div>
+                    <div id="content-responsividade" class="accordion-content" hidden>
+                        <ul>
+                            <li>Desenvolva primeiro para telas pequenas (mobile-first) e depois adicione estilos para telas maiores usando media queries.</li>
+                            <li>Use Flexbox e Grid para criar layouts flexíveis e robustos que se adaptam a qualquer tamanho de tela.</li>
+                            <li>Prefira unidades relativas (`rem`, `em`, `%`, `vw`/`vh`) em vez de unidades absolutas (`px`) para fontes e espaçamentos.</li>
+                        </ul>
+                        <div class="code-block">
+                            <pre><code>.container {
+  width: 90%; /* Flexível */
+  max-width: 1100px; /* Limite máximo */
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 80%;
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header">
+                         <input type="checkbox" id="check-css" class="progress-checkbox" data-item="css">
+                        <label for="check-css" class="sr-only">Marcar Organização de CSS como concluído</label>
+                        <button class="accordion-btn" aria-expanded="false" aria-controls="content-css">
+                            Organização de CSS
+                            <span class="accordion-icon">+</span>
+                        </button>
+                    </div>
+                    <div id="content-css" class="accordion-content" hidden>
+                        <ul>
+                            <li>Utilize variáveis CSS (`:root`) para valores reutilizáveis como cores e fontes, facilitando a manutenção.</li>
+                            <li>Adote uma convenção de nomenclatura, como BEM (Block, Element, Modifier), para evitar conflitos de estilo.</li>
+                            <li>Divida seu CSS em arquivos menores e mais gerenciáveis se o projeto crescer (ex: `header.css`, `forms.css`).</li>
+                            <li>Comente seções complexas do seu código para explicar o "porquê" de certas decisões.</li>
+                        </ul>
+                        <div class="code-block">
+                            <pre><code>/* BEM Naming Convention */
+.card { /* Block */ }
+.card__image { /* Element */ }
+.card--featured { /* Modifier */ }
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+            
+            </section>
+        </div>
     </main>
 
     <footer>

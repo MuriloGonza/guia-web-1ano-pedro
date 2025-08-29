@@ -19,7 +19,87 @@
     </header>
 
     <main>
-        <h1>Panorama de Tecnologias Web</h1>
+        <div class="container">
+            <section class="page-intro">
+                <h1>Panorama de Tecnologias Web</h1>
+                <p>Explore as ferramentas e tecnologias que formam o ecossistema de desenvolvimento web moderno, do front-end ao deploy.</p>
+            </section>
+
+            <section class="filtering-tools" aria-labelledby="filter-title">
+                <h2 id="filter-title" class="sr-only">Ferramentas de Filtragem</h2>
+                <div class="filters-container">
+                    <h3>Filtrar por Categoria:</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-category="all">Todas</button>
+                        <button class="filter-btn" data-category="frontend">Front-end</button>
+                        <button class="filter-btn" data-category="backend">Back-end</button>
+                        <button class="filter-btn" data-category="database">Bancos de Dados</button>
+                        <button class="filter-btn" data-category="devops">DevOps/Deploy</button>
+                        <button class="filter-btn" data-category="testing">Testes</button>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <label for="search-input">Busca textual:</label>
+                    <input type="search" id="search-input" placeholder="Digite para buscar...">
+                </div>
+            </section>
+
+            <section class="tech-grid-section" aria-live="polite">
+                <div id="tech-grid" class="tech-grid">
+                    <article class="tech-card" data-category="frontend">
+                        <div class="card-header">
+                            <h3>React</h3>
+                            <span class="badge" data-level="intermediario">Intermediário</span>
+                        </div>
+                        <p>Uma biblioteca JavaScript para construir interfaces de usuário.</p>
+                        <button class="details-btn" data-tech="react">Ver Detalhes</button>
+                    </article>
+                    
+                    <article class="tech-card" data-category="backend">
+                        <div class="card-header">
+                            <h3>Node.js</h3>
+                            <span class="badge" data-level="intermediario">Intermediário</span>
+                        </div>
+                        <p>Um ambiente de execução JavaScript no servidor.</p>
+                        <button class="details-btn" data-tech="nodejs">Ver Detalhes</button>
+                    </article>
+
+                    <article class="tech-card" data-category="database">
+                         <div class="card-header">
+                            <h3>PostgreSQL</h3>
+                            <span class="badge" data-level="avancado">Avançado</span>
+                        </div>
+                        <p>Um poderoso sistema de banco de dados relacional de código aberto.</p>
+                        <button class="details-btn" data-tech="postgresql">Ver Detalhes</button>
+                    </article>
+                </div>
+                 <p id="no-results" class="no-results-message" style="display: none;">Nenhuma tecnologia encontrada com os critérios selecionados.</p>
+            </section>
+        </div>
+
+        <div id="tech-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" style="display: none;">
+            <div class="modal-content">
+                <button id="close-modal" class="close-btn" aria-label="Fechar modal">&times;</button>
+                <h2 id="modal-title">Nome da Tecnologia</h2>
+                <p id="modal-description">Descrição completa sobre para que serve.</p>
+                
+                <div class="pros-cons">
+                    <div>
+                        <h3>Prós</h3>
+                        <ul id="modal-pros"></ul>
+                    </div>
+                    <div>
+                        <h3>Contras</h3>
+                        <ul id="modal-cons"></ul>
+                    </div>
+                </div>
+
+                <h3>Quando escolher <span id="modal-tech-name">X</span>?</h3>
+                <ul id="modal-when-to-choose"></ul>
+
+                <a href="#" id="modal-link" target="_blank" rel="noopener noreferrer">Link Oficial</a>
+            </div>
+        </div>
     </main>
 
     <footer>
