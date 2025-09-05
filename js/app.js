@@ -351,4 +351,102 @@ document.addEventListener('DOMContentLoaded', () => {
         // === INICIALIZAÇÃO DA PÁGINA ===
         loadProgress();
     }
+
+    // ===================================
+    // LÓGICA DA PÁGINA FLUXO DE PROJETO
+    // ===================================
+    if (document.querySelector('.timeline')) { // Executa somente se estiver na página de fluxo
+
+        // 1. DADOS PARA OS TOOLTIPS
+        const tooltipData = {
+            descoberta: {
+                title: 'Descoberta e Estratégia',
+                deliverables: 'Briefing, análise de concorrência, definição de público-alvo.',
+                risks: 'Escopo mal definido, falta de clareza nos objetivos do cliente.'
+            },
+            requisitos: {
+                title: 'Análise de Requisitos',
+                deliverables: 'Documento de requisitos funcionais e não-funcionais, mapa do site.',
+                risks: 'Requisitos incompletos ou que mudam constantemente (scope creep).'
+            },
+            prototipo: {
+                title: 'Protótipo e Wireframe',
+                deliverables: 'Wireframes de baixa e alta fidelidade, protótipo navegável.',
+                risks: 'Focar em design em vez de funcionalidade, feedback tardio dos stakeholders.'
+            },
+            design: {
+                title: 'Design UI/UX',
+                deliverables: 'Guia de estilo (style guide), mockups finais de todas as telas.',
+                risks: 'Design que não considera limitações técnicas, feedback subjetivo.'
+            },
+            implementacao: {
+                title: 'Implementação (Código)',
+                deliverables: 'Código-fonte versionado no Git (HTML, CSS, JS), componentes reutilizáveis.',
+                risks: 'Atrasos técnicos, débitos técnicos acumulados, má qualidade do código.'
+            },
+            testes: {
+                title: 'Testes e QA',
+                deliverables: 'Plano de testes, relatório de bugs, testes de usabilidade.',
+                risks: 'Testes insuficientes, bugs críticos encontrados perto do prazo final.'
+            },
+            deploy: {
+                title: 'Publicação (Deploy)',
+                deliverables: 'Ambiente de produção configurado, site no ar, domínio e SSL configurados.',
+                risks: 'Problemas de configuração do servidor, inatividade (downtime) inesperada.'
+            },
+            manutencao: {
+                title: 'Monitoramento e Manutenção',
+                deliverables: 'Plano de backup, monitoramento de performance, atualizações de segurança.',
+                risks: 'Falta de monitoramento, novas vulnerabilidades de segurança, site fora do ar.'
+            }
+        };
+
+        // 2. ELEMENTOS DO DOM
+        const timelineSteps = document.querySelectorAll('.timeline-step');
+        const tooltip = document.getElementById('tooltip');
+
+        // 3. LÓGICA DE EXIBIÇÃO E POSICIONAMENTO
+        timelineSteps.forEach(step => {
+            step.addEventListener('click', (event) => {
+                event.stopPropagation(); // Impede que o clique feche o tooltip imediatamente
+                const stepKey = step.dataset.step;
+                const data = tooltipData[stepKey];
+
+                if (data) {
+                    // Preenche o tooltip com os dados corretos
+                    document.getElementById('tooltip-title').textContent = data.title;
+                    document.getElementById('tooltip-deliverables').textContent = data.deliverables;
+                    document.getElementById('tooltip-risks').textContent = data.risks;
+
+                    // Calcula a posição do tooltip
+                    const stepRect = step.getBoundingClientRect();
+                    tooltip.hidden = false; // Torna visível para poder medir suas dimensões
+                    
+                    const tooltipHeight = tooltip.offsetHeight;
+                    const tooltipWidth = tooltip.offsetWidth;
+
+                    // Posiciona o tooltip acima e centralizado ao item
+                    let top = stepRect.top + window.scrollY - tooltipHeight - 15; // 15px de espaço
+                    let left = stepRect.left + window.scrollX + (stepRect.width / 2) - (tooltipWidth / 2);
+
+                    // Ajusta para não sair da tela na horizontal
+                    if (left < 10) left = 10;
+                    if ((left + tooltipWidth) > document.body.clientWidth - 10) {
+                        left = document.body.clientWidth - tooltipWidth - 10;
+                    }
+
+                    tooltip.style.top = `${top}px`;
+                    tooltip.style.left = `${left}px`;
+                }
+            });
+        });
+
+        // 4. LÓGICA PARA FECHAR O TOOLTIP
+        document.addEventListener('click', (event) => {
+            // Se o tooltip não estiver escondido e o clique for fora dele e de um step
+            if (!tooltip.hidden && !tooltip.contains(event.target) && !event.target.closest('.timeline-step')) {
+                tooltip.hidden = true;
+            }
+        });
+    }
 });
