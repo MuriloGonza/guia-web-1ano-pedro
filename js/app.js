@@ -271,4 +271,84 @@ document.addEventListener('DOMContentLoaded', () => {
         
         initializePage(); // Roda a função de inicialização
     }
+
+    // ===================================
+    // LÓGICA DA PÁGINA BOAS PRÁTICAS
+    // ===================================
+    if (document.querySelector('.accordion')) { // Executa somente se estiver na página de boas práticas
+
+        // === LÓGICA DO ACCORDION ===
+        const accordionBtns = document.querySelectorAll('.accordion-btn');
+
+        accordionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+                const content = document.getElementById(btn.getAttribute('aria-controls'));
+
+                // Fecha todos os outros accordions antes de abrir o novo
+                accordionBtns.forEach(otherBtn => {
+                    if (otherBtn !== btn) {
+                        otherBtn.setAttribute('aria-expanded', 'false');
+                        const otherContent = document.getElementById(otherBtn.getAttribute('aria-controls'));
+                        otherContent.hidden = true;
+                    }
+                });
+
+                // Alterna o estado do accordion clicado
+                if (isExpanded) {
+                    btn.setAttribute('aria-expanded', 'false');
+                    content.hidden = true;
+                } else {
+                    btn.setAttribute('aria-expanded', 'true');
+                    content.hidden = false;
+                }
+            });
+        });
+        
+        // === LÓGICA DO CHECKLIST DE PROGRESSO ===
+        const checkboxes = document.querySelectorAll('.progress-checkbox');
+        const progressText = document.getElementById('progress-text');
+        const progressBar = document.getElementById('learning-progress');
+        const totalCheckboxes = checkboxes.length;
+        const STORAGE_KEY = 'learningProgress';
+
+        function updateProgress() {
+            const checkedCount = document.querySelectorAll('.progress-checkbox:checked').length;
+            const percentage = totalCheckboxes > 0 ? Math.round((checkedCount / totalCheckboxes) * 100) : 0;
+            
+            progressText.textContent = `${percentage}%`;
+            progressBar.value = percentage;
+        }
+
+        function saveProgress() {
+            const progress = {};
+            checkboxes.forEach(checkbox => {
+                progress[checkbox.dataset.item] = checkbox.checked;
+            });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            const savedProgress = JSON.parse(localStorage.getItem(STORAGE_KEY));
+            if (savedProgress) {
+                checkboxes.forEach(checkbox => {
+                    const itemKey = checkbox.dataset.item;
+                    if (savedProgress[itemKey]) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+            updateProgress();
+        }
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                updateProgress();
+                saveProgress();
+            });
+        });
+
+        // === INICIALIZAÇÃO DA PÁGINA ===
+        loadProgress();
+    }
 });
