@@ -19,7 +19,66 @@
     </header>
 
     <main>
-        <h1>Fluxograma de um Projeto Web</h1>
+        <div class="container">
+            <section class="page-intro">
+                <h1>Fluxograma de um Projeto Web Completo</h1>
+                <p>Da ideia inicial à manutenção contínua, conheça as etapas que transformam um conceito em um produto digital no ar.</p>
+            </section>
+
+            <section class="flowchart-section">
+                <h2>Visão Geral do Processo</h2>
+                <div class="flowchart-container">
+                    <img src="assets/fluxograma-projeto-web.svg" alt="Fluxograma de um projeto web, mostrando etapas como Descoberta, Requisitos, Design, Implementação, Testes, Deploy e Manutenção.">
+                </div>
+            </section>
+
+            <section class="timeline-section">
+                <h2>Etapas Detalhadas</h2>
+                <div class="timeline">
+                    <div class="timeline-step" data-step="descoberta">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Descoberta</div>
+                    </div>
+                    <div class="timeline-step" data-step="requisitos">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Requisitos</div>
+                    </div>
+                    <div class="timeline-step" data-step="prototipo">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Protótipo</div>
+                    </div>
+                    <div class="timeline-step" data-step="design">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Design</div>
+                    </div>
+                    <div class="timeline-step" data-step="implementacao">
+                        <div class="step-number">5</div>
+                        <div class="step-title">Implementação</div>
+                    </div>
+                    <div class="timeline-step" data-step="testes">
+                        <div class="step-number">6</div>
+                        <div class="step-title">Testes</div>
+                    </div>
+                    <div class="timeline-step" data-step="deploy">
+                        <div class="step-number">7</div>
+                        <div class="step-title">Deploy</div>
+                    </div>
+                    <div class="timeline-step" data-step="manutencao">
+                        <div class="step-number">8</div>
+                        <div class="step-title">Manutenção</div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="tooltip" class="tooltip" role="tooltip" hidden>
+                <h4 id="tooltip-title">Título da Etapa</h4>
+                <div id="tooltip-content">
+                    <p><strong>Entregáveis:</strong> <span id="tooltip-deliverables"></span></p>
+                    <p><strong>Riscos Comuns:</strong> <span id="tooltip-risks"></span></p>
+                </div>
+                <div class="tooltip-arrow"></div>
+            </div>
+        </div>
     </main>
 
     <footer>

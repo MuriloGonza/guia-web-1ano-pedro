@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="400">
+    <style>
+        .box { fill: white; stroke: #2563EB; stroke-width: 2; }
+        .text { font-family: Arial; fill: #111827; }
+        .arrow { stroke: #2563EB; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <defs>
+        <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+        </marker>
+    </defs>
+    <!-- Exemplo de fluxograma básico -->
+    <rect class="box" x="50" y="50" width="100" height="50" rx="5"/>
+    <text class="text" x="100" y="80" text-anchor="middle">Descoberta</text>
+    
+    <rect class="box" x="200" y="50" width="100" height="50" rx="5"/>
+    <text class="text" x="250" y="80" text-anchor="middle">Requisitos</text>
+    
+    <rect class="box" x="350" y="50" width="100" height="50" rx="5"/>
+    <text class="text" x="400" y="80" text-anchor="middle">Protótipo</text>
+    
+    <rect class="box" x="500" y="50" width="100" height="50" rx="5"/>
+    <text class="text" x="550" y="80" text-anchor="middle">Design</text>
+    
+    <rect class="box" x="650" y="50" width="100" height="50" rx="5"/>
+    <text class="text" x="700" y="80" text-anchor="middle">Deploy</text>
+    
+    <!-- Setas conectando as caixas -->
+    <path class="arrow" d="M 150 75 H 200"/>
+    <path class="arrow" d="M 300 75 H 350"/>
+    <path class="arrow" d="M 450 75 H 500"/>
+    <path class="arrow" d="M 600 75 H 650"/>
+</svg>
