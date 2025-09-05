@@ -19,7 +19,39 @@
     </header>
 
     <main>
-        <h1>Teste seus Conhecimentos</h1>
+        <div class="container">
+            <div class="quiz-container">
+                <div id="quiz-start">
+                    <h1>Teste Seus Conhecimentos</h1>
+                    <p>Responda 8 perguntas sobre HTML, CSS, JavaScript e Boas Práticas para ver como está sua base de conhecimento.</p>
+                    <p class="best-score-display">Sua melhor pontuação: <strong id="best-score-start">--</strong></p>
+                    <button id="start-quiz-btn" class="btn-cta">Começar Quiz</button>
+                </div>
+
+                <div id="quiz-question-screen" hidden>
+                    <div class="quiz-header">
+                        <p>Questão <span id="question-number">1</span> de <span id="total-questions">8</span></p>
+                    </div>
+                    <h2 id="question-text">Qual tag HTML é usada para criar um link?</h2>
+                    <div id="answer-options" class="answer-options">
+                    </div>
+                    <button id="next-question-btn" class="btn-cta" disabled>Próxima Questão</button>
+                    <p id="feedback-text" class="feedback"></p>
+                </div>
+
+                <div id="quiz-results" hidden>
+                    <h1>Quiz Finalizado!</h1>
+                    <p class="final-score-text">Você acertou <strong id="final-score">0</strong> de <strong id="total-questions-results">8</strong> questões.</p>
+                    <p class="best-score-display">Sua melhor pontuação de todos os tempos é: <strong id="best-score-end">--</strong></p>
+                    <button id="restart-quiz-btn" class="btn-cta">Tentar Novamente</button>
+                    <div class="explanations-container">
+                        <h2>Revisão das Respostas</h2>
+                        <div id="answer-explanations">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
