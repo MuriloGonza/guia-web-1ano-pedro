@@ -658,3 +658,137 @@ progress#learning-progress::-moz-progress-bar {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* =================================== */
+/* === PÁGINA FLUXO DE PROJETO === */
+/* =================================== */
+
+.flowchart-section {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.flowchart-container img {
+    max-width: 100%;
+    height: auto;
+    background-color: var(--cor-branco);
+    padding: 1rem;
+    border: 1px solid var(--cor-bordas);
+    border-radius: 8px;
+}
+
+.timeline-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.timeline {
+    display: flex;
+    overflow-x: auto; /* Permite rolar horizontalmente em telas pequenas */
+    padding: 2rem 0;
+    /* Melhora a experiência de rolagem */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--cor-primaria) var(--cor-fundo-claro);
+}
+/* Estilo da barra de rolagem para Chrome/Safari */
+.timeline::-webkit-scrollbar { height: 8px; }
+.timeline::-webkit-scrollbar-track { background: var(--cor-fundo-claro); }
+.timeline::-webkit-scrollbar-thumb { background-color: var(--cor-primaria); border-radius: 4px; }
+
+
+.timeline-step {
+    flex: 1 0 120px; /* Não encolhe, não cresce, base de 120px */
+    position: relative;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+/* A linha que conecta as etapas */
+.timeline-step::after {
+    content: '';
+    position: absolute;
+    top: 20px; /* Alinha verticalmente com o centro do círculo */
+    left: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 4px;
+    background-color: var(--cor-bordas);
+    z-index: 1;
+}
+
+/* Remove a linha do último item */
+.timeline-step:last-child::after {
+    display: none;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--cor-branco);
+    border: 3px solid var(--cor-bordas);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-family: var(--fonte-titulos);
+    margin: 0 auto;
+    position: relative;
+    z-index: 2; /* Fica na frente da linha */
+    transition: all 0.3s ease;
+}
+
+.step-title {
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+/* Efeito Hover na Linha do Tempo */
+.timeline-step:hover .step-number {
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+    transform: scale(1.1);
+}
+
+
+/* === ESTILOS DO TOOLTIP === */
+.tooltip {
+    position: absolute; /* Será posicionado pelo JS */
+    background-color: var(--cor-texto);
+    color: var(--cor-branco);
+    padding: 1rem;
+    border-radius: 8px;
+    width: 280px;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tooltip[hidden] {
+    display: none; /* Garante que está escondido por padrão */
+}
+
+.tooltip h4 {
+    font-family: var(--fonte-titulos);
+    color: var(--cor-secundaria);
+    margin-bottom: 0.5rem;
+}
+
+.tooltip p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Seta do Tooltip (feita com CSS) */
+.tooltip-arrow {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--cor-texto);
+}
