@@ -299,156 +299,137 @@ main {
 
 /* Animação para o menu surgir */
 
+/* =================================== */
 /* === PÁGINA BOAS PRÁTICAS === */
-/* Seção de Progresso */
+/* =================================== */
+
 .progress-section {
   background-color: var(--cor-branco);
   padding: 1.5rem;
   border-radius: 8px;
+  border: 1px solid var(--cor-bordas);
   margin-bottom: 2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .progress-section h2 {
-  font-family: var(--fonte-titulos);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.progress-bar-container {
-  margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
 }
 
 .progress-bar-container label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
-progress {
+#progress-text {
+    font-family: var(--fonte-titulos);
+    color: var(--cor-primaria);
+}
+
+progress#learning-progress {
   width: 100%;
-  height: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-  border: none;
+  height: 1.5rem;
+  accent-color: var(--cor-secundaria); /* Maneira moderna de colorir */
+  
+  /* Fallback para navegadores mais antigos */
+  color: var(--cor-secundaria);
 }
 
-progress::-webkit-progress-bar {
+/* Customização para Chrome/Safari */
+progress#learning-progress::-webkit-progress-bar {
   background-color: var(--cor-fundo-claro);
-  border-radius: 5px;
+  border-radius: 8px;
 }
-
-progress::-webkit-progress-value {
+progress#learning-progress::-webkit-progress-value {
   background-color: var(--cor-secundaria);
-  border-radius: 5px;
+  border-radius: 8px;
   transition: width 0.3s ease;
 }
 
-/* Accordion */
+/* Customização para Firefox */
+progress#learning-progress::-moz-progress-bar {
+  background-color: var(--cor-secundaria);
+  border-radius: 8px;
+}
+
 .accordion {
-  margin-top: 2rem;
+  border: 1px solid var(--cor-bordas);
+  border-radius: 8px;
+  overflow: hidden; /* Garante que os cantos arredondados funcionem nos itens */
 }
 
 .accordion-item {
-  background-color: var(--cor-branco);
-  border: 1px solid var(--cor-bordas);
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  overflow: hidden;
+  border-bottom: 1px solid var(--cor-bordas);
+}
+.accordion-item:last-child {
+  border-bottom: none;
 }
 
 .accordion-item-header {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  gap: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+    background-color: var(--cor-branco);
 }
 
 .progress-checkbox {
-  margin: 0;
-  width: 20px;
-  height: 20px;
-  accent-color: var(--cor-secundaria);
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--cor-primaria);
 }
 
 .accordion-btn {
-  flex: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1.5rem 0;
+  width: 100%;
+  text-align: left;
+  font-family: var(--fonte-titulos);
+  font-size: 1.1rem;
+  color: var(--cor-texto);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background: none;
-  border: none;
-  font-family: var(--fonte-titulos);
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-align: left;
-  cursor: pointer;
-  color: var(--cor-texto);
-}
-
-.accordion-btn:hover {
-  background-color: var(--cor-fundo-claro);
 }
 
 .accordion-icon {
   font-size: 1.5rem;
+  font-weight: 600;
   color: var(--cor-primaria);
   transition: transform 0.3s ease;
 }
 
+/* Estilo do botão quando o conteúdo está expandido */
 .accordion-btn[aria-expanded="true"] .accordion-icon {
-  transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.accordion-btn[aria-expanded="true"] {
+    color: var(--cor-primaria);
 }
 
 .accordion-content {
-  padding: 1.5rem;
-  border-top: 1px solid var(--cor-bordas);
+  padding: 0 1.5rem 1.5rem 1.5rem;
   background-color: var(--cor-fundo-claro);
+  display: grid;
+  grid-template-rows: 0fr; /* Truque para animação: começa com 0 frações de altura */
+  transition: grid-template-rows 0.3s ease-out;
 }
 
-.accordion-content[hidden] {
-  display: none;
+.accordion-content > div {
+    overflow: hidden; /* Essencial para o truque de animação funcionar */
+}
+
+/* Estilo do conteúdo quando está visível */
+.accordion-content:not([hidden]) {
+    grid-template-rows: 1fr; /* Quando não está escondido, ocupa 1 fração de altura */
 }
 
 .accordion-content ul {
-  list-style-position: inside;
-  margin-bottom: 1.5rem;
-}
-
-.accordion-content ul li {
-  margin-bottom: 0.75rem;
-  line-height: 1.5;
-}
-
-.accordion-content .code-block {
-  margin-top: 1rem;
-}
-
-/* Media Queries para o Accordion */
-@media (min-width: 768px) {
-  .accordion-item-header {
-    padding: 0.5rem 1rem;
-  }
-  
-  .accordion-btn {
-    padding: 1.25rem;
-  }
-  
-  .accordion-content {
-    padding: 2rem;
-  }
+    margin: 1rem 0;
+    padding-left: 1.5rem;
 }
 @keyframes slideIn {
     from {
