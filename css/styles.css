@@ -298,6 +298,158 @@ main {
 }
 
 /* Animação para o menu surgir */
+
+/* === PÁGINA BOAS PRÁTICAS === */
+/* Seção de Progresso */
+.progress-section {
+  background-color: var(--cor-branco);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.progress-section h2 {
+  font-family: var(--fonte-titulos);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.progress-bar-container {
+  margin-top: 1rem;
+}
+
+.progress-bar-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+progress {
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: var(--cor-fundo-claro);
+  border-radius: 5px;
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--cor-secundaria);
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+/* Accordion */
+.accordion {
+  margin-top: 2rem;
+}
+
+.accordion-item {
+  background-color: var(--cor-branco);
+  border: 1px solid var(--cor-bordas);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.accordion-item-header {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 1rem;
+}
+
+.progress-checkbox {
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  accent-color: var(--cor-secundaria);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.accordion-btn {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: none;
+  border: none;
+  font-family: var(--fonte-titulos);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  color: var(--cor-texto);
+}
+
+.accordion-btn:hover {
+  background-color: var(--cor-fundo-claro);
+}
+
+.accordion-icon {
+  font-size: 1.5rem;
+  color: var(--cor-primaria);
+  transition: transform 0.3s ease;
+}
+
+.accordion-btn[aria-expanded="true"] .accordion-icon {
+  transform: rotate(45deg);
+}
+
+.accordion-content {
+  padding: 1.5rem;
+  border-top: 1px solid var(--cor-bordas);
+  background-color: var(--cor-fundo-claro);
+}
+
+.accordion-content[hidden] {
+  display: none;
+}
+
+.accordion-content ul {
+  list-style-position: inside;
+  margin-bottom: 1.5rem;
+}
+
+.accordion-content ul li {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.accordion-content .code-block {
+  margin-top: 1rem;
+}
+
+/* Media Queries para o Accordion */
+@media (min-width: 768px) {
+  .accordion-item-header {
+    padding: 0.5rem 1rem;
+  }
+  
+  .accordion-btn {
+    padding: 1.25rem;
+  }
+  
+  .accordion-content {
+    padding: 2rem;
+  }
+}
 @keyframes slideIn {
     from {
         transform: translateX(100%);
